@@ -1,0 +1,125 @@
+# Tech Company Corpus
+# 60 paragraphs covering 10 companies with intentional multi-hop relationships.
+# Each paragraph stands alone but connects to others via shared entities.
+# Used as input for GraphRAG Lab Day 19.
+# ===================================================================
+
+[01] OpenAI was founded in December 2015 in San Francisco, California. The founding team included Sam Altman, Elon Musk, Greg Brockman, Ilya Sutskever, Wojciech Zaremba, and John Schulman. The company was originally established as a non-profit research laboratory dedicated to safe artificial general intelligence.
+
+[02] In 2019, OpenAI created a capped-profit subsidiary called OpenAI LP to attract larger investments. Microsoft became OpenAI's largest corporate investor that same year, initially committing one billion dollars. The partnership granted Microsoft preferred access to OpenAI's technology for use in its Azure cloud platform.
+
+[03] Sam Altman is the chief executive officer of OpenAI. Before leading OpenAI, Altman served as president of the startup accelerator Y Combinator from 2014 to 2019. He was briefly removed from the CEO role in November 2023 but was reinstated within days following pressure from employees and investors.
+
+[04] Elon Musk co-founded OpenAI but resigned from its board of directors in February 2018, citing potential conflicts of interest with Tesla's artificial intelligence work. Musk later founded a competing AI company called xAI in 2023. He has remained a vocal critic of OpenAI's transition toward commercial products.
+
+[05] OpenAI released the conversational assistant ChatGPT to the public on November 30, 2022. ChatGPT reached one hundred million active users within two months, making it one of the fastest-growing consumer applications in history. The product is built on the GPT family of large language models.
+
+[06] OpenAI's GPT-4 model was released in March 2023 and powers the paid ChatGPT Plus tier. The company also produces the DALL-E image generation system and the Whisper speech recognition model. All flagship OpenAI models run primarily on Microsoft Azure infrastructure.
+
+[07] Greg Brockman serves as president of OpenAI and was one of its co-founders. Ilya Sutskever, another co-founder, worked as chief scientist at OpenAI before departing in 2024 to start his own company called Safe Superintelligence Inc. Both played central roles in shaping OpenAI's research direction.
+
+[08] Microsoft was founded in 1975 by Bill Gates and Paul Allen in Albuquerque, New Mexico. The company later moved its headquarters to Redmond, Washington, where it remains today. Microsoft's first major product was a BASIC interpreter for the Altair 8800 personal computer.
+
+[09] Bill Gates served as chief executive officer of Microsoft from 1975 to 2000 before transitioning into a chairman role. Steve Ballmer succeeded Gates as CEO and led Microsoft from 2000 until 2014. Gates left the Microsoft board in 2020 to focus on philanthropy through the Bill & Melinda Gates Foundation.
+
+[10] Satya Nadella has been the chief executive officer of Microsoft since February 2014. Under Nadella's leadership, Microsoft pivoted aggressively toward cloud computing and artificial intelligence. He previously led Microsoft's Cloud and Enterprise group before being appointed CEO.
+
+[11] Microsoft's Azure cloud division provides the computing infrastructure for OpenAI's model training and deployment. The deep partnership between Microsoft and OpenAI is sometimes described as a defining alliance of the modern AI era. Azure also hosts dedicated supercomputing clusters built specifically for OpenAI workloads.
+
+[12] Microsoft acquired the developer platform GitHub in 2018 for approximately seven and a half billion dollars. GitHub later became the foundation for GitHub Copilot, an AI pair-programming tool launched in 2021. Copilot is powered by language models developed jointly with OpenAI.
+
+[13] Microsoft acquired the professional networking site LinkedIn in 2016 for approximately twenty-six billion dollars. LinkedIn operates as an independent subsidiary while integrating with Microsoft's broader productivity ecosystem. Reid Hoffman, LinkedIn's co-founder, later joined OpenAI's board.
+
+[14] Google was founded in September 1998 by Larry Page and Sergey Brin while they were graduate students at Stanford University. The company began as a research project on PageRank, an algorithm for ranking web pages. Google was incorporated in Menlo Park, California, before moving to its current Mountain View campus.
+
+[15] Larry Page served as Google's chief executive officer from 1998 to 2001 and again from 2011 to 2015. Sergey Brin worked alongside Page as president of Google during much of that period. The two co-founders stepped back from day-to-day operations in late 2019 but retain controlling voting shares.
+
+[16] Alphabet Inc. is the parent company of Google, created in 2015 as a corporate restructuring move. Alphabet was established to separate Google's core internet businesses from its other ventures, often called "Other Bets". DeepMind, Waymo, and Verily are all subsidiaries of Alphabet alongside Google.
+
+[17] Sundar Pichai has been chief executive officer of Google since 2015 and chief executive officer of Alphabet since 2019. Before becoming CEO, Pichai led the development of Google Chrome and the Android operating system. He joined Google in 2004.
+
+[18] Google acquired the British artificial intelligence laboratory DeepMind in January 2014 for a reported four hundred million pounds. DeepMind continued to operate as a semi-autonomous research lab based in London. After Alphabet's restructuring, DeepMind became a subsidiary of Alphabet.
+
+[19] Google announced its Gemini family of large language models in December 2023. Gemini was developed jointly by teams at Google Research and DeepMind following an internal merger called Google DeepMind. Gemini powers the Bard chatbot, which was later renamed Gemini.
+
+[20] DeepMind was founded in London in September 2010 by Demis Hassabis, Shane Legg, and Mustafa Suleyman. The company focused on combining neuroscience-inspired methods with machine learning. DeepMind's mission was stated as solving intelligence and using it to solve everything else.
+
+[21] Demis Hassabis serves as chief executive officer of Google DeepMind. Hassabis is a former chess prodigy and neuroscientist who completed a PhD at University College London. He was awarded the 2024 Nobel Prize in Chemistry for his work on AlphaFold.
+
+[22] DeepMind's AlphaGo program defeated the world champion Go player Lee Sedol in March 2016. The system was trained using deep reinforcement learning combined with Monte Carlo tree search. AlphaGo's success was widely seen as a milestone in artificial intelligence.
+
+[23] DeepMind also developed AlphaFold, a system that predicts the three-dimensional structure of proteins from their amino acid sequences. AlphaFold 2 achieved unprecedented accuracy in the 2020 CASP protein-folding competition. The AlphaFold Protein Structure Database is freely available to researchers worldwide.
+
+[24] Mustafa Suleyman, a co-founder of DeepMind, left to start Inflection AI in 2022. He joined Microsoft in March 2024 as chief executive officer of Microsoft AI. Suleyman now leads Microsoft's consumer AI products including the Copilot assistant.
+
+[25] Meta Platforms, formerly known as Facebook Inc., was founded in February 2004 by Mark Zuckerberg in Cambridge, Massachusetts. Zuckerberg launched the original Facebook social network from his Harvard University dormitory. The company's headquarters are located in Menlo Park, California.
+
+[26] Mark Zuckerberg has served as chief executive officer of Meta since the company's founding. He retains majority voting control through dual-class share structure. Sheryl Sandberg served as Meta's chief operating officer from 2008 until her departure in 2022.
+
+[27] Facebook Inc. officially changed its name to Meta Platforms in October 2021. The renaming reflected the company's strategic focus on building the metaverse and immersive virtual worlds. The Facebook social network itself remained one of Meta's core products under the new corporate identity.
+
+[28] Meta owns the photo and video sharing service Instagram, which it acquired in 2012 for approximately one billion dollars. Instagram was founded by Kevin Systrom and Mike Krieger in 2010. The platform now serves over two billion monthly active users.
+
+[29] Meta owns the messaging service WhatsApp, which it acquired in 2014 for approximately nineteen billion dollars. WhatsApp was founded by Jan Koum and Brian Acton in 2009. WhatsApp end-to-end encryption was rolled out globally in 2016.
+
+[30] Fundamental AI Research, abbreviated as FAIR, is the artificial intelligence research lab of Meta Platforms. FAIR was established in 2013 and has produced major open-source contributions including PyTorch and the LLaMA family of language models. FAIR maintains offices in New York, Menlo Park, Paris, Montreal, and several other cities.
+
+[31] Yann LeCun is the chief AI scientist at Meta and a vice president of the company. LeCun co-founded FAIR alongside Mark Zuckerberg in 2013 after a long career at NYU and Bell Labs. He shared the 2018 Turing Award with Geoffrey Hinton and Yoshua Bengio for their pioneering work on deep learning.
+
+[32] Meta released the LLaMA family of open-weight large language models starting in 2023. LLaMA 2 was released in July 2023 in partnership with Microsoft Azure. LLaMA 3 followed in 2024 with significantly improved performance. The open release strategy distinguishes Meta from competitors like OpenAI and Google.
+
+[33] NVIDIA Corporation was founded in April 1993 by Jensen Huang, Chris Malachowsky, and Curtis Priem in Santa Clara, California. The company initially focused on graphics processors for personal computers and gaming consoles. NVIDIA's headquarters remain in Santa Clara today.
+
+[34] Jensen Huang has served as chief executive officer of NVIDIA since the company's founding in 1993. Huang was born in Taiwan and emigrated to the United States as a child. He earned an electrical engineering degree from Oregon State and a master's degree from Stanford.
+
+[35] NVIDIA designs and manufactures graphics processing units, commonly called GPUs, used for gaming, professional visualization, and scientific computing. The company introduced the GeForce brand in 1999. NVIDIA's GPU architecture has been adapted to accelerate machine learning workloads.
+
+[36] NVIDIA's H100 and A100 data center accelerators are widely used for training large language models. The company's CUDA software platform, launched in 2007, made GPU programming accessible to a broad developer community. CUDA effectively created NVIDIA's dominant position in AI infrastructure.
+
+[37] OpenAI, Microsoft, Google, Meta, and Anthropic all rely on NVIDIA accelerators to train their largest models. NVIDIA itself depends heavily on Taiwan Semiconductor Manufacturing Company, known as TSMC, to fabricate its chips. The supply chain concentration has become a major focus of governments and industry analysts.
+
+[38] Anthropic was founded in 2021 in San Francisco by Dario Amodei, Daniela Amodei, Tom Brown, and several other former OpenAI researchers. The company describes itself as an AI safety lab focused on building reliable and steerable systems. Anthropic operates as a public benefit corporation.
+
+[39] Dario Amodei serves as chief executive officer of Anthropic, while his sister Daniela Amodei is president of the company. Before founding Anthropic, Dario Amodei was vice president of research at OpenAI. He led the team that built GPT-2 and GPT-3 during his time at OpenAI.
+
+[40] The team that founded Anthropic departed OpenAI together in 2020 and 2021 over differences in research direction. Several of Anthropic's founders had worked on safety-focused projects within OpenAI. The exodus is one of the most significant team departures in modern AI industry history.
+
+[41] Anthropic's flagship product is the Claude family of AI assistants. Claude was first released in 2023 and competes directly with OpenAI's ChatGPT and Google's Gemini. The Claude models emphasize helpfulness, harmlessness, and honesty as core design principles.
+
+[42] Anthropic raised significant funding rounds from Google, with Google committing more than two billion dollars across multiple investments. Despite this investment, Anthropic operates independently and partners with multiple cloud providers. Google Cloud is one of the platforms hosting Claude.
+
+[43] Amazon announced an investment of up to four billion dollars in Anthropic in September 2023, later increased to eight billion dollars. Anthropic agreed to use Amazon Web Services as its primary cloud provider as part of the deal. Claude models are available through the Amazon Bedrock service.
+
+[44] Tesla Inc. was founded in 2003 in San Carlos, California, by Martin Eberhard and Marc Tarpenning. The company was named after the inventor Nikola Tesla. Tesla's mission is to accelerate the world's transition to sustainable energy through electric vehicles and energy products.
+
+[45] Elon Musk joined Tesla in 2004 as chairman of the board after leading the company's Series A funding round. He became chief executive officer in 2008 during a period of crisis at the company. Musk has remained Tesla's CEO and largest shareholder since then.
+
+[46] Elon Musk co-founded SpaceX in 2002, several years before joining Tesla. SpaceX develops launch vehicles and spacecraft including the Falcon 9 rocket and the Dragon capsule. Musk serves as chief executive officer and chief engineer of SpaceX.
+
+[47] Elon Musk's xAI was founded in 2023 with the stated goal of understanding the true nature of the universe. The company released a chatbot named Grok integrated into the X social media platform. Musk acquired Twitter in 2022 and renamed it X.
+
+[48] Tesla operates the Autopilot driver assistance system and is developing a Full Self-Driving feature. The company also designs custom AI training hardware called Dojo for processing video data from its vehicle fleet. Tesla manufactures both vehicles and the chips used in its in-car AI computers.
+
+[49] Apple Inc. was founded on April 1, 1976, by Steve Jobs, Steve Wozniak, and Ronald Wayne. The company was originally incorporated as Apple Computer Inc. and based in Cupertino, California. Wayne sold his shares for eight hundred dollars only twelve days after the founding.
+
+[50] Steve Jobs served as Apple's chief executive officer from 1997 until his resignation due to illness in August 2011. He had previously been ousted from Apple in 1985 and returned in 1997 following Apple's acquisition of his company NeXT. Jobs passed away in October 2011.
+
+[51] Tim Cook has been chief executive officer of Apple since August 2011. Cook joined Apple in 1998 from Compaq and previously served as chief operating officer. Under Cook's leadership, Apple became the first publicly traded U.S. company to reach a three-trillion-dollar market capitalization.
+
+[52] Apple introduced the voice assistant Siri as part of the iPhone 4S launch in October 2011. Siri originated as a spinoff from SRI International and was acquired by Apple in 2010. Apple has gradually integrated more on-device machine learning into its products.
+
+[53] The iPhone, first released by Apple in June 2007, transformed the smartphone industry. Apple also produces the iPad tablet computer, the Mac line of personal computers, and the Apple Watch. The Apple Silicon M-series chips, introduced in 2020, are designed in-house.
+
+[54] Amazon.com was founded by Jeff Bezos in July 1994 in Bellevue, Washington. The company began as an online bookstore and gradually expanded into general merchandise, cloud computing, digital streaming, and artificial intelligence. Amazon's headquarters are now in Seattle.
+
+[55] Jeff Bezos served as chief executive officer of Amazon from 1994 until July 2021. He retains a significant ownership stake and remains executive chairman of the board. Bezos also founded the aerospace company Blue Origin in 2000.
+
+[56] Amazon Web Services, launched publicly in 2006, is the cloud computing division of Amazon. AWS provides computing, storage, and machine learning services to enterprises and governments around the world. AWS is widely regarded as the global market leader in public cloud infrastructure.
+
+[57] Andy Jassy succeeded Jeff Bezos as chief executive officer of Amazon in July 2021. Jassy had previously led Amazon Web Services from its founding in 2003. Adam Selipsky became the new CEO of AWS but stepped down in 2024.
+
+[58] Amazon Bedrock is a service that hosts foundation models from multiple AI providers including Anthropic, AI21 Labs, and Cohere. The deep partnership between Amazon and Anthropic positions AWS as a key counterweight to the Microsoft-OpenAI alliance. Bedrock launched generally in late 2023.
+
+[59] The modern artificial intelligence industry is dominated by a small number of foundation model providers including OpenAI, Anthropic, Google DeepMind, Meta, and Mistral AI. Most of these providers depend on a small number of compute providers, primarily Microsoft Azure, Google Cloud, and Amazon Web Services. NVIDIA hardware powers nearly all of their training infrastructure.
+
+[60] Several leading AI researchers have moved between OpenAI, Google DeepMind, Anthropic, and Meta over the past decade. Notable examples include Dario Amodei moving from OpenAI to found Anthropic, Mustafa Suleyman moving from DeepMind to Inflection and then to Microsoft, and Ilya Sutskever leaving OpenAI to found Safe Superintelligence Inc. The fluidity of talent has shaped the competitive landscape.

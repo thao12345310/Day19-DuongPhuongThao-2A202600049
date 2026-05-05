@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "corpus": "wiki_corpus.txt (276 paragraphs from ~93 Wikipedia articles)",
+    "total": 30,
+    "categories": {
+      "single_hop": "Direct fact in 1 paragraph (7 questions)",
+      "multi_hop": "Requires ≥2-hop graph traversal across documents (10 questions)",
+      "ambiguous": "Multiple valid answers — tests completeness (7 questions)",
+      "out_of_domain": "Information NOT in corpus — tests honest abstention (6 questions)"
+    },
+    "scoring_rules": {
+      "correct": "Answer contains the gold_answer or a valid subset (for ambiguous)",
+      "hallucinated": "Answer asserts a fact not supported by corpus, especially for out_of_domain (where correct answer = 'I don't know')"
+    },
+    "design_notes": "Questions designed against actual top hubs in v2 graph: Apple, Amazon, IBM, Google, Microsoft, NVIDIA, OpenAI, Meta, Facebook, Alphabet. Questions avoid Anthropic-specific deep facts (cluster info less dense) and Tesla cluster (4/10 articles failed scrape)."
+  },
+  "questions": [
+    {
+      "qid": "Q01",
+      "category": "single_hop",
+      "question": "Who is the CEO of Microsoft?",
+      "gold_answer": "Satya Nadella",
+      "gold_entities": ["Microsoft", "Satya Nadella"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q02",
+      "category": "single_hop",
+      "question": "Who is the CEO of Apple?",
+      "gold_answer": "Tim Cook",
+      "gold_entities": ["Apple", "Tim Cook"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q03",
+      "category": "single_hop",
+      "question": "Who is the CEO of NVIDIA?",
+      "gold_answer": "Jensen Huang",
+      "gold_entities": ["NVIDIA", "Jensen Huang"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q04",
+      "category": "single_hop",
+      "question": "What conversational AI assistant did OpenAI release in late 2022?",
+      "gold_answer": "ChatGPT",
+      "gold_entities": ["OpenAI", "ChatGPT"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q05",
+      "category": "single_hop",
+      "question": "What is the parent company of Google?",
+      "gold_answer": "Alphabet Inc.",
+      "gold_entities": ["Google", "Alphabet Inc."],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q06",
+      "category": "single_hop",
+      "question": "Where is Apple headquartered?",
+      "gold_answer": "Cupertino, California",
+      "gold_entities": ["Apple", "Cupertino"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q07",
+      "category": "single_hop",
+      "question": "Who founded SpaceX?",
+      "gold_answer": "Elon Musk",
+      "gold_entities": ["SpaceX", "Elon Musk"],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q08",
+      "category": "multi_hop",
+      "question": "Who is the CEO of the company that acquired GitHub?",
+      "gold_answer": "Satya Nadella (CEO of Microsoft, which acquired GitHub)",
+      "gold_entities": ["GitHub", "Microsoft", "Satya Nadella"],
+      "expected_hops": 2,
+      "reasoning_path": "GitHub -[ACQUIRED_BY]- Microsoft -[CEO]- Satya Nadella"
+    },
+    {
+      "qid": "Q09",
+      "category": "multi_hop",
+      "question": "Which AI lab founded by Demis Hassabis is now part of Google?",
+      "gold_answer": "DeepMind",
+      "gold_entities": ["Demis Hassabis", "DeepMind", "Google"],
+      "expected_hops": 2,
+      "reasoning_path": "Demis Hassabis -[FOUNDED]- DeepMind -[ACQUIRED_BY/SUBSIDIARY_OF]- Google"
+    },
+    {
+      "qid": "Q10",
+      "category": "multi_hop",
+      "question": "Which company employs the chief AI scientist who shared the 2018 Turing Award with Hinton and Bengio?",
+      "gold_answer": "Meta",
+      "gold_entities": ["Yann LeCun", "Turing Award", "Meta"],
+      "expected_hops": 2,
+      "reasoning_path": "Turing Award 2018 -[AWARDED_TO]- Yann LeCun -[CHIEF_AI_SCIENTIST_AT]- Meta"
+    },
+    {
+      "qid": "Q11",
+      "category": "multi_hop",
+      "question": "Who founded the company that owns Whole Foods?",
+      "gold_answer": "Jeff Bezos",
+      "gold_entities": ["Whole Foods", "Amazon", "Jeff Bezos"],
+      "expected_hops": 2,
+      "reasoning_path": "Whole Foods -[OWNED_BY]- Amazon -[FOUNDED_BY]- Jeff Bezos"
+    },
+    {
+      "qid": "Q12",
+      "category": "multi_hop",
+      "question": "What is the cloud platform of the company that invested heavily in OpenAI?",
+      "gold_answer": "Microsoft Azure",
+      "gold_entities": ["OpenAI", "Microsoft", "Microsoft Azure"],
+      "expected_hops": 2,
+      "reasoning_path": "OpenAI -[INVESTED_IN_BY]- Microsoft -[OWNS/DEVELOPS]- Microsoft Azure"
+    },
+    {
+      "qid": "Q13",
+      "category": "multi_hop",
+      "question": "Who founded the chess-playing computer that defeated Garry Kasparov?",
+      "gold_answer": "IBM",
+      "gold_entities": ["Deep Blue", "IBM"],
+      "expected_hops": 2,
+      "reasoning_path": "Deep Blue -[DEFEATED]- Kasparov; Deep Blue -[DEVELOPED_BY]- IBM"
+    },
+    {
+      "qid": "Q14",
+      "category": "multi_hop",
+      "question": "Who is the current CEO of the company that owns LinkedIn?",
+      "gold_answer": "Satya Nadella",
+      "gold_entities": ["LinkedIn", "Microsoft", "Satya Nadella"],
+      "expected_hops": 2,
+      "reasoning_path": "LinkedIn -[OWNED_BY]- Microsoft -[CEO]- Satya Nadella"
+    },
+    {
+      "qid": "Q15",
+      "category": "multi_hop",
+      "question": "Which company did Steve Jobs found that Apple later acquired, leading to his return?",
+      "gold_answer": "NeXT",
+      "gold_entities": ["Steve Jobs", "NeXT", "Apple"],
+      "expected_hops": 2,
+      "reasoning_path": "Steve Jobs -[FOUNDED]- NeXT -[ACQUIRED_BY]- Apple"
+    },
+    {
+      "qid": "Q16",
+      "category": "multi_hop",
+      "question": "Who is the CEO of the company that produces the GeForce GPU brand?",
+      "gold_answer": "Jensen Huang",
+      "gold_entities": ["GeForce", "NVIDIA", "Jensen Huang"],
+      "expected_hops": 2,
+      "reasoning_path": "GeForce -[BRAND_OF/PRODUCED_BY]- NVIDIA -[CEO]- Jensen Huang"
+    },
+    {
+      "qid": "Q17",
+      "category": "multi_hop",
+      "question": "Who founded the open-source software company that IBM acquired in 2019?",
+      "gold_answer": "Red Hat (founded by Bob Young and Marc Ewing)",
+      "gold_entities": ["Red Hat", "IBM"],
+      "expected_hops": 2,
+      "reasoning_path": "IBM -[ACQUIRED]- Red Hat -[FOUNDED_BY]- Bob Young/Marc Ewing"
+    },
+    {
+      "qid": "Q18",
+      "category": "ambiguous",
+      "question": "Who founded Apple?",
+      "gold_answer": "Steve Jobs, Steve Wozniak, and Ronald Wayne",
+      "gold_entities": ["Apple", "Steve Jobs", "Steve Wozniak", "Ronald Wayne"],
+      "expected_hops": 1,
+      "ambiguity_note": "Three co-founders — full credit if all named; partial credit if 2/3"
+    },
+    {
+      "qid": "Q19",
+      "category": "ambiguous",
+      "question": "Who founded Google?",
+      "gold_answer": "Larry Page and Sergey Brin",
+      "gold_entities": ["Google", "Larry Page", "Sergey Brin"],
+      "expected_hops": 1,
+      "ambiguity_note": "Two co-founders — must include both for full credit"
+    },
+    {
+      "qid": "Q20",
+      "category": "ambiguous",
+      "question": "Which CEOs has Microsoft had?",
+      "gold_answer": "Bill Gates (1975–2000), Steve Ballmer (2000–2014), and Satya Nadella (2014–present)",
+      "gold_entities": ["Microsoft", "Bill Gates", "Steve Ballmer", "Satya Nadella"],
+      "expected_hops": 1,
+      "ambiguity_note": "Three CEOs — full credit if all three named"
+    },
+    {
+      "qid": "Q21",
+      "category": "ambiguous",
+      "question": "Which social media platforms does Meta own?",
+      "gold_answer": "Facebook, Instagram, WhatsApp",
+      "gold_entities": ["Meta", "Facebook", "Instagram", "WhatsApp"],
+      "expected_hops": 1,
+      "ambiguity_note": "Three primary platforms — full credit if all three named"
+    },
+    {
+      "qid": "Q22",
+      "category": "ambiguous",
+      "question": "Which AI products has OpenAI developed?",
+      "gold_answer": "ChatGPT, GPT-4, DALL-E, Whisper (any subset of major OpenAI products is acceptable)",
+      "gold_entities": ["OpenAI", "ChatGPT", "GPT-4", "DALL-E", "Whisper"],
+      "expected_hops": 1,
+      "ambiguity_note": "Multiple valid products — full credit if 3+ named"
+    },
+    {
+      "qid": "Q23",
+      "category": "ambiguous",
+      "question": "Which companies has Elon Musk founded or led?",
+      "gold_answer": "SpaceX, Tesla, X (formerly Twitter), xAI (any 3+ acceptable; OpenAI co-founder also valid)",
+      "gold_entities": ["Elon Musk", "SpaceX", "Tesla", "X", "xAI"],
+      "expected_hops": 1,
+      "ambiguity_note": "Multiple valid companies — full credit if 3+ named"
+    },
+    {
+      "qid": "Q24",
+      "category": "ambiguous",
+      "question": "Which microarchitectures has NVIDIA released for its data center GPUs?",
+      "gold_answer": "Hopper, Blackwell, Ampere (any 2+ valid)",
+      "gold_entities": ["NVIDIA", "Hopper", "Blackwell", "Ampere"],
+      "expected_hops": 1,
+      "ambiguity_note": "Three microarchitectures named in corpus — full credit if 2+ named"
+    },
+    {
+      "qid": "Q25",
+      "category": "out_of_domain",
+      "question": "What is the home address of Tim Cook?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific address = HALLUCINATED. Correct answer must indicate insufficient information."
+    },
+    {
+      "qid": "Q26",
+      "category": "out_of_domain",
+      "question": "What was Microsoft's stock price on January 15, 2024?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific price = HALLUCINATED."
+    },
+    {
+      "qid": "Q27",
+      "category": "out_of_domain",
+      "question": "How many cars did Tesla sell in 2023?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific number = HALLUCINATED."
+    },
+    {
+      "qid": "Q28",
+      "category": "out_of_domain",
+      "question": "What is Sundar Pichai's annual salary?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific figure = HALLUCINATED."
+    },
+    {
+      "qid": "Q29",
+      "category": "out_of_domain",
+      "question": "What programming language was Microsoft Azure originally written in?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific language = HALLUCINATED (the corpus mentions Azure but not its implementation language)."
+    },
+    {
+      "qid": "Q30",
+      "category": "out_of_domain",
+      "question": "What was Steve Jobs's first job before founding Apple?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific job = HALLUCINATED (the corpus may mention NeXT but not a pre-Apple job)."
+    }
+  ]
+}

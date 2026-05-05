@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total": 20,
+    "categories": {
+      "single_hop": "Câu trả lời nằm trực tiếp trong 1 đoạn của corpus",
+      "multi_hop": "Cần ≥2 bước traverse trong graph để có đáp án",
+      "ambiguous": "Có nhiều entity/đáp án hợp lệ — test khả năng list toàn bộ",
+      "out_of_domain": "Thông tin KHÔNG có trong corpus — test hallucination"
+    },
+    "scoring_rules": {
+      "correct": "Câu trả lời chứa toàn bộ gold_answer hoặc subset hợp lệ với ambiguous",
+      "hallucinated": "Trả lời bịa thông tin không có trong corpus — đặc biệt critical cho out_of_domain (đáp án đúng = 'không đủ thông tin' / 'I don't know')"
+    }
+  },
+  "questions": [
+    {
+      "qid": "Q01",
+      "category": "single_hop",
+      "question": "Who is the CEO of Microsoft?",
+      "gold_answer": "Satya Nadella",
+      "gold_entities": ["Microsoft", "Satya Nadella"],
+      "source_paragraphs": [10],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q02",
+      "category": "single_hop",
+      "question": "When was OpenAI founded?",
+      "gold_answer": "December 2015",
+      "gold_entities": ["OpenAI", "2015"],
+      "source_paragraphs": [1],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q03",
+      "category": "single_hop",
+      "question": "Which AI laboratory did Google acquire in January 2014?",
+      "gold_answer": "DeepMind",
+      "gold_entities": ["Google", "DeepMind"],
+      "source_paragraphs": [18],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q04",
+      "category": "single_hop",
+      "question": "Who founded NVIDIA?",
+      "gold_answer": "Jensen Huang, Chris Malachowsky, and Curtis Priem",
+      "gold_entities": ["NVIDIA", "Jensen Huang", "Chris Malachowsky", "Curtis Priem"],
+      "source_paragraphs": [33],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q05",
+      "category": "single_hop",
+      "question": "What AI assistant did OpenAI release on November 30, 2022?",
+      "gold_answer": "ChatGPT",
+      "gold_entities": ["OpenAI", "ChatGPT"],
+      "source_paragraphs": [5],
+      "expected_hops": 1
+    },
+    {
+      "qid": "Q06",
+      "category": "multi_hop",
+      "question": "Who is the CEO of OpenAI's largest corporate investor?",
+      "gold_answer": "Satya Nadella (CEO of Microsoft, which is OpenAI's largest corporate investor)",
+      "gold_entities": ["OpenAI", "Microsoft", "Satya Nadella"],
+      "source_paragraphs": [2, 10],
+      "expected_hops": 2,
+      "reasoning_path": "OpenAI -[INVESTED_BY]-> Microsoft -[CEO]-> Satya Nadella"
+    },
+    {
+      "qid": "Q07",
+      "category": "multi_hop",
+      "question": "Which AI company did Dario Amodei work at before founding Anthropic?",
+      "gold_answer": "OpenAI",
+      "gold_entities": ["Anthropic", "Dario Amodei", "OpenAI"],
+      "source_paragraphs": [38, 39],
+      "expected_hops": 2,
+      "reasoning_path": "Anthropic -[FOUNDED_BY]-> Dario Amodei -[FORMER_EMPLOYER]-> OpenAI"
+    },
+    {
+      "qid": "Q08",
+      "category": "multi_hop",
+      "question": "Who is the chief AI scientist at the company that owns Instagram?",
+      "gold_answer": "Yann LeCun",
+      "gold_entities": ["Instagram", "Meta", "Yann LeCun"],
+      "source_paragraphs": [28, 31],
+      "expected_hops": 2,
+      "reasoning_path": "Instagram -[OWNED_BY]-> Meta -[CHIEF_AI_SCIENTIST]-> Yann LeCun"
+    },
+    {
+      "qid": "Q09",
+      "category": "multi_hop",
+      "question": "What is the parent company of the AI lab that Google acquired in 2014?",
+      "gold_answer": "Alphabet",
+      "gold_entities": ["Google", "DeepMind", "Alphabet"],
+      "source_paragraphs": [16, 18],
+      "expected_hops": 2,
+      "reasoning_path": "Google -[ACQUIRED]-> DeepMind -[SUBSIDIARY_OF]-> Alphabet"
+    },
+    {
+      "qid": "Q10",
+      "category": "multi_hop",
+      "question": "Which OpenAI co-founder later became chief executive officer of Tesla?",
+      "gold_answer": "Elon Musk",
+      "gold_entities": ["OpenAI", "Elon Musk", "Tesla"],
+      "source_paragraphs": [1, 45],
+      "expected_hops": 2,
+      "reasoning_path": "OpenAI -[FOUNDED_BY]-> Elon Musk -[CEO_OF]-> Tesla"
+    },
+    {
+      "qid": "Q11",
+      "category": "ambiguous",
+      "question": "Who founded Apple?",
+      "gold_answer": "Steve Jobs, Steve Wozniak, and Ronald Wayne",
+      "gold_entities": ["Apple", "Steve Jobs", "Steve Wozniak", "Ronald Wayne"],
+      "source_paragraphs": [49],
+      "expected_hops": 1,
+      "ambiguity_note": "Three co-founders — answer must include all three to be fully correct"
+    },
+    {
+      "qid": "Q12",
+      "category": "ambiguous",
+      "question": "Which AI companies were founded in San Francisco?",
+      "gold_answer": "OpenAI and Anthropic",
+      "gold_entities": ["OpenAI", "Anthropic", "San Francisco"],
+      "source_paragraphs": [1, 38],
+      "expected_hops": 1,
+      "ambiguity_note": "Multiple companies founded in SF — answer must list both OpenAI and Anthropic"
+    },
+    {
+      "qid": "Q13",
+      "category": "ambiguous",
+      "question": "Which people left OpenAI to start their own AI companies?",
+      "gold_answer": "Elon Musk (xAI), Dario Amodei (Anthropic), and Ilya Sutskever (Safe Superintelligence Inc.)",
+      "gold_entities": ["Elon Musk", "xAI", "Dario Amodei", "Anthropic", "Ilya Sutskever", "Safe Superintelligence"],
+      "source_paragraphs": [4, 7, 38, 40],
+      "expected_hops": 2,
+      "ambiguity_note": "Three valid people — full credit only if all three identified"
+    },
+    {
+      "qid": "Q14",
+      "category": "ambiguous",
+      "question": "Who are the Turing Award winners mentioned in the corpus?",
+      "gold_answer": "Yann LeCun, Geoffrey Hinton, and Yoshua Bengio (shared the 2018 Turing Award)",
+      "gold_entities": ["Yann LeCun", "Geoffrey Hinton", "Yoshua Bengio", "Turing Award"],
+      "source_paragraphs": [31],
+      "expected_hops": 1,
+      "ambiguity_note": "All three Turing Award winners mentioned together — answer must list all three"
+    },
+    {
+      "qid": "Q15",
+      "category": "ambiguous",
+      "question": "Which companies has Elon Musk founded, co-founded, or led?",
+      "gold_answer": "OpenAI (co-founded), Tesla (CEO since 2008), SpaceX (founded 2002), xAI (founded 2023), and X/Twitter (acquired 2022)",
+      "gold_entities": ["Elon Musk", "OpenAI", "Tesla", "SpaceX", "xAI", "X", "Twitter"],
+      "source_paragraphs": [1, 4, 45, 46, 47],
+      "expected_hops": 1,
+      "ambiguity_note": "At least 4 companies — partial credit if 3+ identified"
+    },
+    {
+      "qid": "Q16",
+      "category": "out_of_domain",
+      "question": "What is OpenAI's office street address?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "source_paragraphs": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific address returned = HALLUCINATED. Correct answer must indicate insufficient information."
+    },
+    {
+      "qid": "Q17",
+      "category": "out_of_domain",
+      "question": "What was Microsoft's revenue in fiscal year 2024?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "source_paragraphs": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific revenue figure = HALLUCINATED. Correct answer must indicate insufficient information."
+    },
+    {
+      "qid": "Q18",
+      "category": "out_of_domain",
+      "question": "What car does Jensen Huang drive?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "source_paragraphs": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any car model returned = HALLUCINATED. Correct answer must indicate insufficient information."
+    },
+    {
+      "qid": "Q19",
+      "category": "out_of_domain",
+      "question": "Who is Sam Altman's spouse?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "source_paragraphs": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any name returned = HALLUCINATED. Correct answer must indicate insufficient information."
+    },
+    {
+      "qid": "Q20",
+      "category": "out_of_domain",
+      "question": "How many employees does Apple have?",
+      "gold_answer": "Not enough information in the corpus",
+      "gold_entities": [],
+      "source_paragraphs": [],
+      "expected_hops": 0,
+      "hallucination_check": "Any specific number returned = HALLUCINATED. Correct answer must indicate insufficient information."
+    }
+  ]
+}
