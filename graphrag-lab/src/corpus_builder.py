@@ -126,11 +126,19 @@ def load_corpus(
     return paragraphs
 
 
-def load_benchmark(path: Optional[Path] = None) -> list[BenchQuestion]:
+def load_benchmark(
+    path: Optional[Path] = None,
+    expected_count: Optional[int] = EXPECTED_QUESTION_COUNT,
+    expected_distribution: Optional[dict[str, int]] = None,
+) -> list[BenchQuestion]:
     """Load and validate the benchmark questions JSON.
 
     Args:
         path: Override the default path from settings.
+        expected_count: Strict count to validate. Defaults to EXPECTED_QUESTION_COUNT (20)
+            for v1 backwards compatibility. Pass ``None`` to disable count validation.
+        expected_distribution: Strict per-category counts. Defaults to EXPECTED_DISTRIBUTION
+            (5 × 4 categories) for v1. Pass ``None`` to disable distribution validation.
 
     Returns:
         List of BenchQuestion objects in source order.
@@ -138,8 +146,12 @@ def load_benchmark(path: Optional[Path] = None) -> list[BenchQuestion]:
     Raises:
         FileNotFoundError: if benchmark file does not exist.
         ValueError: if structure is invalid, qid duplicates exist,
-                    count != EXPECTED_QUESTION_COUNT, or category distribution wrong.
+                    count != expected_count (when set), or category distribution wrong.
     """
+    # Default distribution: v1 5×4 unless caller overrides or disables
+    if expected_distribution is None and expected_count == EXPECTED_QUESTION_COUNT:
+        expected_distribution = EXPECTED_DISTRIBUTION
+
     path = path or settings.benchmark_path
     if not path.exists():
         raise FileNotFoundError(f"Benchmark file not found: {path}")
@@ -158,9 +170,9 @@ def load_benchmark(path: Optional[Path] = None) -> list[BenchQuestion]:
     distribution: dict[str, int] = {cat: 0 for cat in VALID_CATEGORIES}
 
     for i, q in enumerate(raw_questions):
-        # Required fields
+        # Required fields (source_paragraphs is optional for v2 questions)
         for required in ("qid", "category", "question", "gold_answer",
-                         "gold_entities", "source_paragraphs", "expected_hops"):
+                         "gold_entities", "expected_hops"):
             if required not in q:
                 raise ValueError(f"Question #{i} missing required field: {required}")
 
@@ -180,21 +192,21 @@ def load_benchmark(path: Optional[Path] = None) -> list[BenchQuestion]:
             question=q["question"],
             gold_answer=q["gold_answer"],
             gold_entities=tuple(q["gold_entities"]),
-            source_paragraphs=tuple(q["source_paragraphs"]),
+            source_paragraphs=tuple(q.get("source_paragraphs", [])),
             expected_hops=int(q["expected_hops"]),
             reasoning_path=q.get("reasoning_path"),
             ambiguity_note=q.get("ambiguity_note"),
             hallucination_check=q.get("hallucination_check"),
         ))
 
-    if len(questions) != EXPECTED_QUESTION_COUNT:
+    if expected_count is not None and len(questions) != expected_count:
         raise ValueError(
-            f"Expected {EXPECTED_QUESTION_COUNT} questions, found {len(questions)}"
+            f"Expected {expected_count} questions, found {len(questions)}"
         )
 
-    if distribution != EXPECTED_DISTRIBUTION:
+    if expected_distribution is not None and distribution != expected_distribution:
         raise ValueError(
-            f"Category distribution mismatch. Expected {EXPECTED_DISTRIBUTION}, "
+            f"Category distribution mismatch. Expected {expected_distribution}, "
             f"got {distribution}"
         )
 
